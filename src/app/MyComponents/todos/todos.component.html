@@ -1,5 +1,27 @@
+<app-add-todo 
+    (todoAdd)="addTodo($event)" 
+>
+</app-add-todo>
+
+<h4>Your Todos</h4>
+
+<div *ngIf="this.todos.length === 0; else elseBlock">
+
+    <div class="alert alert-warning" role="alert">
+        No Todo to display ! Add Todo...
+      </div>
+
+</div>
+<ng-template #elseBlock>
+
+    
+    <div *ngFor="let todo of todos">
+        <app-todo-list [todo]="todo" (todoDelete)="deleteTodo($event)" (todoCheckbox)="toggleTodo($event)"></app-todo-list>
+    </div>
+    
+</ng-template>
+
+
+<!-- *ngIf is a directive -->
 <!-- *ngFor is a directive -->
 
-<div *ngFor="let todo of todos">
-    <app-todo-list [todo]="todo" (todoDelete)="deleteTodo($event)"></app-todo-list>
-</div>

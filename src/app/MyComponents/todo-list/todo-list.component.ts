@@ -10,7 +10,8 @@ export class TodoListComponent implements OnInit {
 
   @Input() "todo":Todo;
   @Output() todoDelete: EventEmitter<Todo> = new EventEmitter();
-  
+  @Output() todoCheckbox: EventEmitter<Todo> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -19,6 +20,10 @@ export class TodoListComponent implements OnInit {
   onClick(todo:Todo){
     this.todoDelete.emit(todo);  
     console.log("onClick as been triggered");
+  }
+
+  onCheckboxClick(todo:Todo){
+    this.todoCheckbox.emit(todo);
   }
 }
 
